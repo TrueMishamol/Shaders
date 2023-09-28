@@ -1,0 +1,121 @@
+[gd_scene load_steps=20 format=3 uid="uid://bxcwpnab5qe8s"]
+
+[ext_resource type="Script" path="res://addons/simple_free_look_camera/camera.gd" id="1_07h4o"]
+[ext_resource type="Shader" path="res://shaders/marble_aurora.gdshader" id="1_go63m"]
+[ext_resource type="Shader" path="res://shaders/screen_bug.gdshader" id="2_d58mn"]
+[ext_resource type="Shader" path="res://shaders/aurora.gdshader" id="3_6tp55"]
+[ext_resource type="Shader" path="res://shaders/funny_goo.gdshader" id="4_05ivb"]
+[ext_resource type="Shader" path="res://shaders/russia.gdshader" id="4_5v0nr"]
+[ext_resource type="Shader" path="res://shaders/laggy.gdshader" id="5_damqs"]
+[ext_resource type="Shader" path="res://shaders/no_texture.gdshader" id="5_o4e3q"]
+[ext_resource type="Shader" path="res://shaders/aurora_stone.gdshader" id="6_0js1o"]
+
+[sub_resource type="Environment" id="Environment_swhmw"]
+background_mode = 1
+background_color = Color(0.286275, 0.286275, 0.352941, 1)
+background_energy_multiplier = 2.2
+glow_enabled = true
+glow_strength = 0.5
+fog_light_color = Color(0.517647, 0.552941, 0.607843, 1)
+fog_light_energy = 2.25
+fog_density = 0.1097
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.03
+volumetric_fog_albedo = Color(0.631373, 0.631373, 0.776471, 1)
+volumetric_fog_emission = Color(0.631373, 0.631373, 0.776471, 1)
+volumetric_fog_detail_spread = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0d2r"]
+render_priority = 0
+shader = ExtResource("1_go63m")
+
+[sub_resource type="SphereMesh" id="SphereMesh_xug4l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uuph2"]
+render_priority = 0
+shader = ExtResource("2_d58mn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bhfvi"]
+render_priority = 0
+shader = ExtResource("3_6tp55")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0ass"]
+render_priority = 0
+shader = ExtResource("4_5v0nr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dqxco"]
+render_priority = 0
+shader = ExtResource("5_o4e3q")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_necxd"]
+render_priority = 0
+shader = ExtResource("4_05ivb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_675rq"]
+render_priority = 0
+shader = ExtResource("5_damqs")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hecar"]
+render_priority = 0
+shader = ExtResource("6_0js1o")
+
+[node name="Shaders" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_swhmw")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, -0.25, 9.8385e-09, -0.5, 0.866025, -0.5, 0.75, 0.433013, 0, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 1, 4)
+script = ExtResource("1_07h4o")
+
+[node name="Spheres" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Spheres"]
+material_override = SubResource("ShaderMaterial_w0d2r")
+mesh = SubResource("SphereMesh_xug4l")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Spheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1.74846e-07)
+material_override = SubResource("ShaderMaterial_uuph2")
+mesh = SubResource("SphereMesh_xug4l")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Spheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3.49691e-07)
+material_override = SubResource("ShaderMaterial_bhfvi")
+mesh = SubResource("SphereMesh_xug4l")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="Spheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, 5.24537e-07)
+material_override = SubResource("ShaderMaterial_s0ass")
+mesh = SubResource("SphereMesh_xug4l")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D8" type="MeshInstance3D" parent="Spheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, 5.24537e-07)
+material_override = SubResource("ShaderMaterial_dqxco")
+mesh = SubResource("SphereMesh_xug4l")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Spheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = SubResource("ShaderMaterial_necxd")
+mesh = SubResource("SphereMesh_xug4l")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Spheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 1.74846e-07)
+material_override = SubResource("ShaderMaterial_675rq")
+mesh = SubResource("SphereMesh_xug4l")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="Spheres"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 2, 3.49691e-07)
+material_override = SubResource("ShaderMaterial_hecar")
+mesh = SubResource("SphereMesh_xug4l")
+skeleton = NodePath("../..")
