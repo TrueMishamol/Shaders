@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Shaders"
 run/main_scene="res://scenes/shaders.tscn"
-config/features=PackedStringArray("4.1", "Forward Plus")
+config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.345098, 0.262745, 0.478431, 1)
 config/icon="res://visual/ui/shaders.png"
 
@@ -25,3 +25,13 @@ window/stretch/mode="canvas_items"
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[file_customization]
+
+folder_colors={
+"res://addons/": "red",
+"res://assets/": "pink",
+"res://scenes/": "purple",
+"res://shaders/": "orange",
+"res://visual/": "orange"
+}
